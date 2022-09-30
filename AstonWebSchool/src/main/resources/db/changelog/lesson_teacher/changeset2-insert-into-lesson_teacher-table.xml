@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="insert-into-lesson_teacher" author="Vova">
+        <insert tableName="lesson_teacher">
+            <column name="teacher_id" value="1"/>
+            <column name="lesson_id" value="1"/>
+        </insert>
+
+        <insert tableName="lesson_teacher">
+            <column name="teacher_id" value="2"/>
+            <column name="lesson_id" value="1"/>
+        </insert>
+
+        <insert tableName="lesson_teacher">
+            <column name="teacher_id" value="1"/>
+            <column name="lesson_id" value="2"/>
+        </insert>
+
+        <insert tableName="lesson_teacher">
+            <column name="teacher_id" value="2"/>
+            <column name="lesson_id" value="3"/>
+        </insert>
+
+        <insert tableName="lesson_teacher">
+            <column name="teacher_id" value="2"/>
+            <column name="lesson_id" value="4"/>
+        </insert>
+
+        <insert tableName="lesson_teacher">
+            <column name="teacher_id" value="1"/>
+            <column name="lesson_id" value="5"/>
+        </insert>
+
+        <insert tableName="lesson_teacher">
+            <column name="teacher_id" value="2"/>
+            <column name="lesson_id" value="5"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
