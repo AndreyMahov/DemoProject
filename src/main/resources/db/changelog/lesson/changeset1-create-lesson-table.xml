@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="create-table-lesson" author="Vova">
+        <createTable tableName="lesson">
+            <column name="id" autoIncrement="true"  type="int">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="group_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_lesson_group" referencedTableName="group" referencedColumnNames="id"/>
+            </column>
+
+            <column name="value" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="date" type="java.sql.Types.TIMESTAMP" defaultValueComputed="now()">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
