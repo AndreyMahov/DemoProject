@@ -8,8 +8,9 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "group")
-public class Log extends AbstractBaseEntity{
+public class Log extends AbstractBaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id")
     private Student student;
 
     @Column(name = "body", nullable = false)
@@ -21,7 +22,8 @@ public class Log extends AbstractBaseEntity{
     @NotNull
     private LocalDate registered;
 
-    public Log() {}
+    public Log() {
+    }
 
     public Log(Integer id, Student student, String body, LocalDate registered) {
         super(id);

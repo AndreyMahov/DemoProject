@@ -1,9 +1,6 @@
 package com.prideTeam.AstonWebSchool.entity;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,6 +10,7 @@ import java.time.LocalDate;
 @MappedSuperclass
 public abstract class AbstractBaseUser extends AbstractBaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
     private Role role;
 
     @Column(name = "email", nullable = false, unique = true)
@@ -40,7 +38,8 @@ public abstract class AbstractBaseUser extends AbstractBaseEntity {
     @NotNull
     private LocalDate registered;
 
-    protected AbstractBaseUser() {}
+    protected AbstractBaseUser() {
+    }
 
     public AbstractBaseUser(Integer id, Role role, String email, String password, String name, String surname, LocalDate registered) {
         super(id);

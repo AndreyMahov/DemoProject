@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Table(name = "lesson")
 public class Lesson extends AbstractBaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id")
     private Group group;
 
     @Column(name = "value", nullable = false)
@@ -21,7 +22,8 @@ public class Lesson extends AbstractBaseEntity {
     @NotNull
     private LocalDate registered;
 
-    public Lesson() {}
+    public Lesson() {
+    }
 
     public Lesson(Integer id, Group group, String value, LocalDate registered) {
         super(id);

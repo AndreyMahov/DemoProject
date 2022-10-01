@@ -14,7 +14,8 @@ public class Role extends AbstractBaseEntity {
     @Size(min = 1, max = 64)
     private String role;
 
-    public Role() {}
+    public Role() {
+    }
 
     public Role(Integer id, String role) {
         super(id);
