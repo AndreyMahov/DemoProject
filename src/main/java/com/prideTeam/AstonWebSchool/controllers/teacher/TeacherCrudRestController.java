@@ -43,7 +43,7 @@ public class TeacherCrudRestController {
         Teacher created = teacherService.save(teacher); // обращаемся к сервису
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
-                .buildAndExpand(1).toUri(); // Тут берем id новосоздоной группы
+                .buildAndExpand(created.getId()).toUri(); // Тут берем id новосоздоной группы
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
