@@ -1,13 +1,20 @@
 package com.prideTeam.AstonWebSchool.entity;
 
-import javax.persistence.*;
+import com.prideTeam.AstonWebSchool.entity.entityAbstracts.AbstractBaseEntity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "group")
+@Table(name = "log")
 public class Log extends AbstractBaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
@@ -18,18 +25,18 @@ public class Log extends AbstractBaseEntity {
     @Size(min = 5, max = 72)
     private String body;
 
-    @Column(name = "registered", nullable = false)
+    @Column(name = "date", nullable = false)
     @NotNull
-    private LocalDate registered;
+    private LocalDate date;
 
     public Log() {
     }
 
-    public Log(Integer id, Student student, String body, LocalDate registered) {
+    public Log(Integer id, Student student, String body, LocalDate date) {
         super(id);
         this.student = student;
         this.body = body;
-        this.registered = registered;
+        this.date = date;
     }
 
     public Student getStudent() {
@@ -48,11 +55,11 @@ public class Log extends AbstractBaseEntity {
         this.body = body;
     }
 
-    public LocalDate getRegistered() {
-        return registered;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setRegistered(LocalDate registered) {
-        this.registered = registered;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }

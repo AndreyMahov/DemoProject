@@ -1,4 +1,4 @@
-package com.prideTeam.AstonWebSchool.web.student;
+package com.prideTeam.AstonWebSchool.controllers.student;
 
 
 import com.prideTeam.AstonWebSchool.entity.Student;

@@ -1,4 +1,6 @@
-package com.prideTeam.AstonWebSchool.entity;
+package com.prideTeam.AstonWebSchool.entity.entityAbstracts;
+
+import com.prideTeam.AstonWebSchool.entity.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

@@ -1,4 +1,4 @@
-package com.prideTeam.AstonWebSchool.entity;
+package com.prideTeam.AstonWebSchool.entity.entityAbstracts;
 
 import com.prideTeam.AstonWebSchool.exception.EntityInTransientStateException;
 import org.hibernate.Hibernate;

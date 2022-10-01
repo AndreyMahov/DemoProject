@@ -1,5 +1,7 @@
 package com.prideTeam.AstonWebSchool.entity;
 
+import com.prideTeam.AstonWebSchool.entity.entityAbstracts.AbstractBaseEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,7 +12,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "group")
-public class Group extends AbstractBaseEntity {
+public class Group extends AbstractBaseEntity{
     @Column(name = "name", nullable = false)
     @NotBlank
     @Size(min = 5, max = 64)

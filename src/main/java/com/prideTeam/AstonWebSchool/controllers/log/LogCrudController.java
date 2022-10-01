@@ -1,4 +1,4 @@
-package com.prideTeam.AstonWebSchool.web.log;
+package com.prideTeam.AstonWebSchool.controllers.log;
 
 import com.prideTeam.AstonWebSchool.entity.Log;
 import org.springframework.http.HttpStatus;

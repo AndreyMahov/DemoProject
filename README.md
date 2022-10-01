@@ -1,5 +1,5 @@
 
-Проект Aston com.prideTeam.AstonWebSchool.web school.
+Проект Aston com.prideTeam.AstonWebSchool.controllers school.
 
 Задача проекта автоматизировать процесс обучения и администрирования учебных групп
 

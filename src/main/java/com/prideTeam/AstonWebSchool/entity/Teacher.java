@@ -1,5 +1,7 @@
 package com.prideTeam.AstonWebSchool.entity;
 
+import com.prideTeam.AstonWebSchool.entity.entityAbstracts.AbstractBaseUser;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;

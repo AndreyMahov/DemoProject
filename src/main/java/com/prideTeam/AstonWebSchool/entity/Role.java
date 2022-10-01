@@ -1,5 +1,7 @@
 package com.prideTeam.AstonWebSchool.entity;
 
+import com.prideTeam.AstonWebSchool.entity.entityAbstracts.AbstractBaseEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;

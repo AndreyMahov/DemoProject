@@ -1,6 +1,13 @@
 package com.prideTeam.AstonWebSchool.entity;
 
-import javax.persistence.*;
+import com.prideTeam.AstonWebSchool.entity.entityAbstracts.AbstractBaseEntity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,18 +25,18 @@ public class Lesson extends AbstractBaseEntity {
     @Size(min = 5, max = 64)
     private String value;
 
-    @Column(name = "registered", nullable = false)
+    @Column(name = "date", nullable = false)
     @NotNull
-    private LocalDate registered;
+    private LocalDate date;
 
     public Lesson() {
     }
 
-    public Lesson(Integer id, Group group, String value, LocalDate registered) {
+    public Lesson(Integer id, Group group, String value, LocalDate date) {
         super(id);
         this.group = group;
         this.value = value;
-        this.registered = registered;
+        this.date = date;
     }
 
     public Group getGroup() {
@@ -48,11 +55,11 @@ public class Lesson extends AbstractBaseEntity {
         this.value = value;
     }
 
-    public LocalDate getRegistered() {
-        return registered;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setRegistered(LocalDate registered) {
-        this.registered = registered;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }
