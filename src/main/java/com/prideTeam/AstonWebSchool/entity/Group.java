@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "group")
-public class Group extends AbstractBaseEntity{
+public class Group extends AbstractBaseEntity {
     @Column(name = "name", nullable = false)
     @NotBlank
     @Size(min = 5, max = 64)
@@ -20,7 +20,8 @@ public class Group extends AbstractBaseEntity{
     @NotNull
     private LocalDate registered;
 
-    public Group() {}
+    public Group() {
+    }
 
     public Group(Integer id, String name, LocalDate registered) {
         super(id);

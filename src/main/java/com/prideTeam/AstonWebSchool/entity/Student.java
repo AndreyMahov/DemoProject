@@ -4,12 +4,21 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "student")
 public class Student extends AbstractBaseUser {
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id")
     private Group group;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "lesson_student",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "lesson_id")
+    )
+    private Set<Lesson> lessons;
 
     @Column(name = "points", nullable = false)
     @NotNull
@@ -30,7 +39,8 @@ public class Student extends AbstractBaseUser {
     @NotNull
     private Boolean excluded;
 
-    public Student() {}
+    public Student() {
+    }
 
     public Student(Integer id, Role role, String email, String password, String name, String surname, LocalDate registered,
                    Group group, Float points, Integer absences, Integer reasonableAbsences, Boolean excluded) {
@@ -80,5 +90,13 @@ public class Student extends AbstractBaseUser {
 
     public void setExcluded(Boolean excluded) {
         this.excluded = excluded;
+    }
+
+    public Set<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(Set<Lesson> lessons) {
+        this.lessons = lessons;
     }
 }

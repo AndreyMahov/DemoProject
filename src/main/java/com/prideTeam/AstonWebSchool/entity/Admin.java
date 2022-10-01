@@ -5,7 +5,7 @@ import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "teacher")
+@Table(name = "admin")
 public class Admin extends AbstractBaseUser {
     public Admin() {
     }
