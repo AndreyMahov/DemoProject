@@ -1,6 +1,8 @@
 package com.prideTeam.AstonWebSchool.controllers.teacher;
 
 import com.prideTeam.AstonWebSchool.entity.Teacher;
+import com.prideTeam.AstonWebSchool.services.TeacherService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,10 +30,17 @@ import java.util.List;
 public class TeacherCrudRestController {
     static final String REST_URL = "/rest/teachers/";
 
+    private final TeacherService teacherService;
+
+    @Autowired
+    public TeacherCrudRestController(TeacherService teacherService) {
+        this.teacherService = teacherService;
+    }
+
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Teacher> createWithLocation(@RequestBody Teacher teacher) {
-        Teacher created = null; // обращаемся к сервису
+        Teacher created = teacherService.save(teacher); // обращаемся к сервису
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
                 .buildAndExpand(1).toUri(); // Тут берем id новосоздоной группы
@@ -42,24 +50,24 @@ public class TeacherCrudRestController {
     @GetMapping(value = "{teacherId}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseBody
     public Teacher get(@PathVariable Integer teacherId) {
-        return null;
+        return teacherService.getById(teacherId);
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseBody
     public List<Teacher> getAll() {
-        return Collections.emptyList();
+        return teacherService.getAll();
     }
 
     @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody Teacher teacher) {
-
+        teacherService.update(teacher);
     }
 
     @DeleteMapping("{teacherId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer teacherId) {
-
+        teacherService.delete(teacherId);
     }
 }
