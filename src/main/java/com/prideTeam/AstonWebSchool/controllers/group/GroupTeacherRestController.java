@@ -1,4 +1,4 @@
-package com.prideTeam.AstonWebSchool.web.group;
+package com.prideTeam.AstonWebSchool.controllers.group;
 
 import com.prideTeam.AstonWebSchool.entity.Group;
 import org.springframework.web.bind.annotation.*;

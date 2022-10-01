@@ -1,4 +1,4 @@
-package com.prideTeam.AstonWebSchool.web.student;
+package com.prideTeam.AstonWebSchool.controllers.student;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

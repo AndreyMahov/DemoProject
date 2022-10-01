@@ -32,7 +32,7 @@
 
         <insert tableName="log">
             <column name="student_id" value="1"/>
-            <column name="body" value="Learned spring-com.prideTeam.AstonWebSchool.web"/>
+            <column name="body" value="Learned spring-com.prideTeam.AstonWebSchool.controllers"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

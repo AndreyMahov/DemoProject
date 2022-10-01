@@ -1,4 +1,4 @@
-package com.prideTeam.AstonWebSchool.web.teacher;
+package com.prideTeam.AstonWebSchool.controllers.teacher;
 
 import com.prideTeam.AstonWebSchool.entity.Teacher;
 import org.springframework.http.HttpStatus;
