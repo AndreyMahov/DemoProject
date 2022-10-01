@@ -27,7 +27,7 @@ public class StudentRestController {
 
     }
 
-    @PatchMapping(params = "exclusion")
+    @PatchMapping(params = "exclusion/absences")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void excludeWithNAbsences(@RequestParam int absences, @PathVariable Integer id) {
 
