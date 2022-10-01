@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="insert-into-teacher" author="Vova">
+        <insert tableName="teacher">
+            <column name="name" value="Steve"/>
+            <column name="surname" value="teacherov"/>
+            <column name="email" value="teacher_steve@gmail.com"/>
+            <column name="password" value="password"/>
+            <column name="role_id" value="2"/>
+        </insert>
+
+        <insert tableName="teacher">
+            <column name="name" value="Ivan"/>
+            <column name="surname" value="teacherov"/>
+            <column name="email" value="teacher_ivan@gmail.com"/>
+            <column name="password" value="password"/>
+            <column name="role_id" value="2"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
