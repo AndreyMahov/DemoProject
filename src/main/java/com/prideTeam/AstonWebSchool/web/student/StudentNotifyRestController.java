@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping(value = StudentRestController.REST_URL)
+@RequestMapping(value = StudentNotifyRestController.REST_URL)
 public class StudentNotifyRestController {
     static final String REST_URL = "/rest/students/{id}/notify/";
 
