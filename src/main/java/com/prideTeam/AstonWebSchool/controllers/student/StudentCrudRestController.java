@@ -2,6 +2,7 @@ package com.prideTeam.AstonWebSchool.controllers.student;
 
 
 import com.prideTeam.AstonWebSchool.entity.Student;
+import com.prideTeam.AstonWebSchool.services.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,12 @@ import java.util.List;
 public class StudentCrudRestController {
     static final String REST_URL = "/rest/students/";
 
+    private final StudentService studentService;
+
+    public StudentCrudRestController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Student> createWithLocation(@RequestBody Student student) {
@@ -42,24 +49,24 @@ public class StudentCrudRestController {
     @GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseBody
     public Student get(@PathVariable Integer id) {
-        return null;
+        return studentService.getById(id);
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseBody
     public List<Student> getAll() {
-        return Collections.emptyList();
+        return studentService.getAll();
     }
 
     @PutMapping(value = "/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody Student student, @PathVariable Integer id) {
-
+        studentService.update(student, id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer id) {
-
+        studentService.delete(id);
     }
 }
