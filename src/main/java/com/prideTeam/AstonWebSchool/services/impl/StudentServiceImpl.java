@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class StudentServiceImpl implements StudentService {
 
     private static final String STUDENT_ROLE = "student";
@@ -26,6 +26,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @Transactional
     public Student save(Student student) {
         student.setRole(roleRepository.findByRole(STUDENT_ROLE));
         student.setRegistered(LocalDate.now());
@@ -43,6 +44,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @Transactional
     public void update(Student student, int studentId) {
         if (student.getId() != studentId) {
             throw new EntityNotFoundException();
@@ -51,6 +53,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @Transactional
     public void delete(Integer studentId) {
         studentRepository.deleteById(studentId);
     }
