@@ -11,7 +11,7 @@ public interface StudentService {
 
     List<Student> getAll();
 
-    void update(Student student);
+    void update(Student student, int studentId);
 
     void delete(Integer studentId);
 }
