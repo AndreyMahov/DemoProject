@@ -4,7 +4,7 @@ import com.prideTeam.AstonWebSchool.entity.Teacher;
 
 import java.util.List;
 
-public interface TeacherService {
+public interface TeacherCrudService {
     Teacher save(Teacher teacher);
 
     Teacher getById(Integer teacherId);
