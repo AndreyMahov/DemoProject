@@ -1,6 +1,7 @@
 package com.prideTeam.AstonWebSchool.controllers.teacher;
 
 import com.prideTeam.AstonWebSchool.entity.Teacher;
+import com.prideTeam.AstonWebSchool.services.RoleService;
 import com.prideTeam.AstonWebSchool.services.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,18 +29,22 @@ import java.util.List;
 @RestController
 @RequestMapping(value = TeacherCrudRestController.REST_URL)
 public class TeacherCrudRestController {
-    static final String REST_URL = "/rest/teachers/";
+    static final String REST_URL = "/rest/teachers";
+    private static final String TEACHER_ROLE = "teacher";
 
     private final TeacherService teacherService;
+    private final RoleService roleService;
 
     @Autowired
-    public TeacherCrudRestController(TeacherService teacherService) {
+    public TeacherCrudRestController(TeacherService teacherService, RoleService roleService) {
         this.teacherService = teacherService;
+        this.roleService = roleService;
     }
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Teacher> createWithLocation(@RequestBody Teacher teacher) {
+        teacher.setRole(roleService.findByName(TEACHER_ROLE));
         Teacher created = teacherService.save(teacher); // обращаемся к сервису
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
@@ -47,7 +52,7 @@ public class TeacherCrudRestController {
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
-    @GetMapping(value = "{teacherId}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @GetMapping(value = "/{teacherId}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseBody
     public Teacher get(@PathVariable Integer teacherId) {
         return teacherService.getById(teacherId);
@@ -65,7 +70,7 @@ public class TeacherCrudRestController {
         teacherService.update(teacher);
     }
 
-    @DeleteMapping("{teacherId}")
+    @DeleteMapping("/{teacherId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer teacherId) {
         teacherService.delete(teacherId);

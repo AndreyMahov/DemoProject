@@ -5,7 +5,6 @@ import com.prideTeam.AstonWebSchool.entity.Role;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -37,7 +36,7 @@ public abstract class AbstractBaseUser extends AbstractBaseEntity {
     private String surname;
 
     @Column(name = "registered", nullable = false)
-    @NotNull
+//    @NotNull(groups = View.Persist.class)
     private LocalDate registered;
 
     protected AbstractBaseUser() {

@@ -11,7 +11,7 @@
             </column>
 
             <column name="role" type="varchar(64)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" unique="true"/>
             </column>
         </createTable>
     </changeSet>
