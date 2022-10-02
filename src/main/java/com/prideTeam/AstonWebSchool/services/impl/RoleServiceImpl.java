@@ -1,7 +1,7 @@
 package com.prideTeam.AstonWebSchool.services.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Role;
-import com.prideTeam.AstonWebSchool.repositories.RoleRepository;
+import com.prideTeam.AstonWebSchool.repositories.RoleCrudRepository;
 import com.prideTeam.AstonWebSchool.services.RoleService;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +9,9 @@ import java.util.List;
 
 @Service
 public class RoleServiceImpl implements RoleService {
-    private final RoleRepository repo;
+    private final RoleCrudRepository repo;
 
-    public RoleServiceImpl(RoleRepository repo) {
+    public RoleServiceImpl(RoleCrudRepository repo) {
         this.repo = repo;
     }
 

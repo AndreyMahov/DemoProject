@@ -1,9 +1,9 @@
-package com.prideTeam.AstonWebSchool.services.impl;
+package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Teacher;
-import com.prideTeam.AstonWebSchool.repositories.RoleRepository;
+import com.prideTeam.AstonWebSchool.repositories.RoleCrudRepository;
 import com.prideTeam.AstonWebSchool.repositories.TeacherCrudRepository;
-import com.prideTeam.AstonWebSchool.services.TeacherCrudService;
+import com.prideTeam.AstonWebSchool.services.crud.TeacherCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,18 +18,18 @@ public class TeacherCrudServiceImpl implements TeacherCrudService {
     private static final String TEACHER_ROLE = "teacher";
 
     private final TeacherCrudRepository teacherCrudRepository;
-    private final RoleRepository roleRepository;
+    private final RoleCrudRepository roleCrudRepository;
 
     @Autowired
-    public TeacherCrudServiceImpl(TeacherCrudRepository teacherCrudRepository, RoleRepository roleRepository) {
+    public TeacherCrudServiceImpl(TeacherCrudRepository teacherCrudRepository, RoleCrudRepository roleCrudRepository) {
         this.teacherCrudRepository = teacherCrudRepository;
-        this.roleRepository = roleRepository;
+        this.roleCrudRepository = roleCrudRepository;
     }
 
     @Override
     @Transactional
     public Teacher save(Teacher teacher) {
-        teacher.setRole(roleRepository.findByRole(TEACHER_ROLE));
+        teacher.setRole(roleCrudRepository.findByRole(TEACHER_ROLE));
         teacher.setRegistered(LocalDate.now());
         return teacherCrudRepository.save(teacher);
     }
@@ -41,7 +41,7 @@ public class TeacherCrudServiceImpl implements TeacherCrudService {
     }
 
     @Override
-    public List<Teacher> getAll() {
+    public List<Teacher> getAll()  {
         return teacherCrudRepository.findAll();
     }
 

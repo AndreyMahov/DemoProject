@@ -1,6 +1,7 @@
 package com.prideTeam.AstonWebSchool.controllers.group;
 
 import com.prideTeam.AstonWebSchool.entity.Group;
+import com.prideTeam.AstonWebSchool.services.crud.GroupCrudService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,37 +29,43 @@ import java.util.List;
 public class GroupCrudController {
     static final String REST_URL = "/rest/groups";
 
+    private final GroupCrudService groupCrudService;
+
+    public GroupCrudController(GroupCrudService groupCrudService) {
+        this.groupCrudService = groupCrudService;
+    }
+
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Group> createWithLocation(@RequestBody Group group) {
-        Group created = null; // обращаемся к сервису
+        Group created = groupCrudService.create(group);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
-                .buildAndExpand(1).toUri(); // Тут берем id новосоздоной группы
+                .buildAndExpand(created.getId()).toUri();
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
     @GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseBody
     public Group get(@PathVariable Integer id) {
-        return null;
+        return groupCrudService.getById(id);
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseBody
     public List<Group> getAll() {
-        return Collections.emptyList();
+        return groupCrudService.getAll();
     }
 
     @PutMapping(value = "/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody Group group, @PathVariable Integer id) {
-
+        groupCrudService.update(group,id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer id) {
-
+        groupCrudService.delete(id);
     }
 }

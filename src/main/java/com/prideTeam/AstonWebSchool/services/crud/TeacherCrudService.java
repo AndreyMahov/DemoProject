@@ -1,4 +1,4 @@
-package com.prideTeam.AstonWebSchool.services;
+package com.prideTeam.AstonWebSchool.services.crud;
 
 import com.prideTeam.AstonWebSchool.entity.Teacher;
 
