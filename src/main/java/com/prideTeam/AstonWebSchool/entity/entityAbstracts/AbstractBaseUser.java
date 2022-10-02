@@ -22,7 +22,7 @@ public abstract class AbstractBaseUser extends AbstractBaseEntity {
     @Column(name = "email", nullable = false, unique = true)
     @Email
     @NotBlank
-    @Size(max = 100)
+    @Size(max = 254)
     private String email;
 
     @Column(name = "password", nullable = false)
