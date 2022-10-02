@@ -1,7 +1,6 @@
 package com.prideTeam.AstonWebSchool.services;
 
 import com.prideTeam.AstonWebSchool.entity.Role;
-import com.prideTeam.AstonWebSchool.entity.Student;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public interface RoleService {
 
     List<Role> getAll();
 
-    void update(Role role);
+    void update(int id,Role role);
 
     void delete(Integer roleId);
 

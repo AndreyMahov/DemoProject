@@ -12,7 +12,7 @@ public interface LessonService {
 
     List<Lesson> getAll();
 
-    void update(Lesson lesson);
+    void update(int id, Lesson lesson);
 
     void delete(Integer lessonId);
 }

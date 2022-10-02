@@ -59,10 +59,10 @@ public class TeacherCrudRestController {
         return teacherService.getAll();
     }
 
-    @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @PutMapping(value = "{id}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody Teacher teacher) {
-        teacherService.update(teacher);
+    public void update(@PathVariable Integer id, @RequestBody Teacher teacher) {
+        teacherService.update(id, teacher);
     }
 
     @DeleteMapping("{teacherId}")

@@ -1,5 +1,6 @@
 package com.prideTeam.AstonWebSchool.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.prideTeam.AstonWebSchool.entity.entityAbstracts.AbstractBaseUser;
 
 import javax.persistence.*;
@@ -30,6 +31,7 @@ public class Teacher extends AbstractBaseUser {
         super(id, role, email, password, name, surname, registered);
     }
 
+    @JsonIgnore
     public Set<Group> getGroups() {
         return groups;
     }
@@ -38,6 +40,7 @@ public class Teacher extends AbstractBaseUser {
         this.groups = groups;
     }
 
+    @JsonIgnore
     public Set<Lesson> getLessons() {
         return lessons;
     }

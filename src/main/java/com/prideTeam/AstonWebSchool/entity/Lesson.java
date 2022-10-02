@@ -2,16 +2,12 @@ package com.prideTeam.AstonWebSchool.entity;
 
 import com.prideTeam.AstonWebSchool.entity.entityAbstracts.AbstractBaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "lesson")
@@ -19,6 +15,12 @@ public class Lesson extends AbstractBaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "group_id")
     private Group group;
+
+    @ManyToMany(mappedBy = "lessons")
+    private Set<Student> students;
+
+    @ManyToMany(mappedBy = "lessons")
+    private Set<Teacher> teachers;
 
     @Column(name = "value", nullable = false)
     @NotBlank
@@ -61,5 +63,13 @@ public class Lesson extends AbstractBaseEntity {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
     }
 }

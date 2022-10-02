@@ -11,7 +11,7 @@ public interface LogService {
 
     List<Log> getAll();
 
-    void update(Log role);
+    void update(int id, Log role);
 
     void delete(Integer roleId);
 }

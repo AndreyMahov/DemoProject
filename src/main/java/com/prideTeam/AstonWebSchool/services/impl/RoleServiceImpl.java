@@ -1,6 +1,7 @@
 package com.prideTeam.AstonWebSchool.services.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Role;
+import com.prideTeam.AstonWebSchool.services.CrudService;
 import com.prideTeam.AstonWebSchool.services.RoleService;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void update(Role role) {
+    public void update(int id, Role role) {
 
     }
 

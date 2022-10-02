@@ -11,7 +11,7 @@ public interface TeacherService {
 
     List<Teacher> getAll();
 
-    void update(Teacher teacher);
+    void update(int id, Teacher teacher);
 
     void delete(Integer teacherId);
 }
