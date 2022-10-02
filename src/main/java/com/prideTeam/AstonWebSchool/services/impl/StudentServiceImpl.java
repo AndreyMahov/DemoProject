@@ -5,12 +5,14 @@ import com.prideTeam.AstonWebSchool.repositories.RoleRepository;
 import com.prideTeam.AstonWebSchool.repositories.StudentRepository;
 import com.prideTeam.AstonWebSchool.services.StudentService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 
 @Service
+@Transactional
 public class StudentServiceImpl implements StudentService {
 
     private static final String STUDENT_ROLE = "student";
