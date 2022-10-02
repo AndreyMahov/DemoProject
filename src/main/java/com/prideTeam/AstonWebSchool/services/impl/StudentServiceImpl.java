@@ -42,7 +42,10 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void update(Student student, int studentId) {
-        studentRepository.save(getById(studentId));
+        if (student.getId() != studentId) {
+            throw new EntityNotFoundException();
+        }
+        studentRepository.save(student);
     }
 
     @Override
