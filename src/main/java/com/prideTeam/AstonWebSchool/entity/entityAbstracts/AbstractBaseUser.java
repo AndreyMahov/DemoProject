@@ -1,10 +1,12 @@
 package com.prideTeam.AstonWebSchool.entity.entityAbstracts;
 
+import com.prideTeam.AstonWebSchool.View;
 import com.prideTeam.AstonWebSchool.entity.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -27,16 +29,16 @@ public abstract class AbstractBaseUser extends AbstractBaseEntity {
 
     @Column(name = "name", nullable = false)
     @NotBlank
-    @Size(min = 5, max = 64)
+    @Size(min = 2, max = 64)
     private String name;
 
     @Column(name = "surname", nullable = false)
     @NotBlank
-    @Size(min = 5, max = 64)
+    @Size(min = 2, max = 64)
     private String surname;
 
     @Column(name = "registered", nullable = false)
-//    @NotNull(groups = View.Persist.class)
+    @NotNull(groups = View.Persist.class)
     private LocalDate registered;
 
     protected AbstractBaseUser() {

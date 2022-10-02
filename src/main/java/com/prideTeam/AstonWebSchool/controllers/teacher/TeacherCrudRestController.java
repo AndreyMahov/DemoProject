@@ -1,8 +1,7 @@
 package com.prideTeam.AstonWebSchool.controllers.teacher;
 
 import com.prideTeam.AstonWebSchool.entity.Teacher;
-import com.prideTeam.AstonWebSchool.services.RoleService;
-import com.prideTeam.AstonWebSchool.services.TeacherService;
+import com.prideTeam.AstonWebSchool.services.TeacherCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,63 +15,51 @@ import java.util.List;
 /**
  * Контроллер обрабатывающий CRUD запросы для сущности Teacher.
  * Доступ можно определеять по uri, т.е. к данному контроллеру будет иметь доступ Admin (Hr).
- * <p>
- * Предлагаю принимать и отдавать данные в 2 форматах xml/json это делается очень легко.
- *
- * @RequestBody не обязательно помечать аргумент, для наглядности, если кто-то не знает, как работает @RestController.
- * @ResponseBody не обязательно помечать метод, для наглядности, если кто-то не знает, как работает @RestController.
- * TODO: Обязательно почитайте про каждую аннотацию, что делает и для чего
- * TODO: Обязательно!!! Если нашли ошибку или считаете, что есть что добавить скажите мне
- * TODO: Сделать полноценную реализацию контроллера
  */
 
 @RestController
 @RequestMapping(value = TeacherCrudRestController.REST_URL)
 public class TeacherCrudRestController {
     static final String REST_URL = "/rest/teachers";
-    private static final String TEACHER_ROLE = "teacher";
 
-    private final TeacherService teacherService;
-    private final RoleService roleService;
+    private final TeacherCrudService teacherCrudService;
 
     @Autowired
-    public TeacherCrudRestController(TeacherService teacherService, RoleService roleService) {
-        this.teacherService = teacherService;
-        this.roleService = roleService;
+    public TeacherCrudRestController(TeacherCrudService teacherCrudService) {
+        this.teacherCrudService = teacherCrudService;
     }
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Teacher> createWithLocation(@RequestBody Teacher teacher) {
-        teacher.setRole(roleService.findByName(TEACHER_ROLE));
-        Teacher created = teacherService.save(teacher); // обращаемся к сервису
+        Teacher created = teacherCrudService.save(teacher);
+
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
-                .buildAndExpand(created.getId()).toUri(); // Тут берем id новосоздоной группы
+                .buildAndExpand(created.getId()).toUri();
+
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
-    @GetMapping(value = "/{teacherId}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    @ResponseBody
-    public Teacher get(@PathVariable Integer teacherId) {
-        return teacherService.getById(teacherId);
+    @GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public Teacher get(@PathVariable Integer id) {
+        return teacherCrudService.getById(id);
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    @ResponseBody
     public List<Teacher> getAll() {
-        return teacherService.getAll();
+        return teacherCrudService.getAll();
     }
 
     @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody Teacher teacher) {
-        teacherService.update(teacher);
+    public void update(Teacher teacher) {
+        teacherCrudService.update(teacher);
     }
 
-    @DeleteMapping("/{teacherId}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer teacherId) {
-        teacherService.delete(teacherId);
+    public void delete(@PathVariable Integer id) {
+        teacherCrudService.delete(id);
     }
 }
