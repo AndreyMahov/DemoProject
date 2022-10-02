@@ -68,8 +68,8 @@ public class LogCrudController {
 
     @PutMapping(value = "/{logId}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody Log log, @PathVariable Integer logId, @PathVariable Integer studentId) {
-        logCrudService.update(log, logId, studentId);
+    public void update(@RequestBody Log log, @PathVariable Integer studentId) {
+        logCrudService.update(log, studentId);
     }
 
     @DeleteMapping("/{logId}")

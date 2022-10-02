@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -42,7 +41,9 @@ public class GroupCrudServiceImpl implements GroupCrudService {
     @Override
     @Transactional
     public void update(Group group, Integer groupId) {
-        //TODO
+        if (group.getId().equals(groupId))
+            groupCrudRepository.save(group);
+        else throw new EntityNotFoundException();
     }
 
     @Override

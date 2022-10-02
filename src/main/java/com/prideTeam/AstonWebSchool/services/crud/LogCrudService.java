@@ -11,7 +11,7 @@ public interface LogCrudService {
 
     List<Log> getAll(Integer studentId);
 
-    void update(Log log, Integer logId, Integer studentId);
+    void update(Log log, Integer studentId);
 
     void delete(Integer logId, Integer studentId);
 }
