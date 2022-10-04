@@ -11,7 +11,7 @@ public interface TeacherCrudService {
 
     List<Teacher> getAll();
 
-    void update(Teacher teacher);
+    void update(Teacher teacher, Integer id);
 
     void delete(Integer teacherId);
 }

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional(readOnly = true)
@@ -47,8 +48,11 @@ public class TeacherCrudServiceImpl implements TeacherCrudService {
 
     @Override
     @Transactional
-    public void update(Teacher teacher) {
+    public void update(Teacher teacher, Integer id) {
+        if (!Objects.equals(teacher.getId(), id))
+            throw new EntityNotFoundException();
         teacherCrudRepository.save(teacher);
+
     }
 
     @Override
