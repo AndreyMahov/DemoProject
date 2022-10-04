@@ -1,15 +1,15 @@
-package com.prideTeam.AstonWebSchool.services.impl;
+package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Lesson;
-import com.prideTeam.AstonWebSchool.services.LessonService;
+import com.prideTeam.AstonWebSchool.services.crud.LessonCrudService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class LessonServiceImpl implements LessonService {
+public class LessonCrudServiceImpl implements LessonCrudService {
     @Override
-    public Lesson save(Lesson lesson) {
+    public Lesson create(Lesson lesson) {
         return null;
     }
 

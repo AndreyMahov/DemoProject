@@ -1,11 +1,11 @@
-package com.prideTeam.AstonWebSchool.services;
+package com.prideTeam.AstonWebSchool.services.crud;
 
 import com.prideTeam.AstonWebSchool.entity.Group;
 
 import java.util.List;
 
 public interface GroupCrudService {
-    Group save(Group group);
+    Group create(Group group);
 
     Group getById(Integer groupId);
 

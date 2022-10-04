@@ -1,9 +1,9 @@
-package com.prideTeam.AstonWebSchool.services.impl;
+package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Teacher;
 import com.prideTeam.AstonWebSchool.repositories.RoleRepository;
 import com.prideTeam.AstonWebSchool.repositories.TeacherCrudRepository;
-import com.prideTeam.AstonWebSchool.services.TeacherCrudService;
+import com.prideTeam.AstonWebSchool.services.crud.TeacherCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +29,7 @@ public class TeacherCrudServiceImpl implements TeacherCrudService {
 
     @Override
     @Transactional
-    public Teacher save(Teacher teacher) {
+    public Teacher create(Teacher teacher) {
         teacher.setRole(roleRepository.findByRole(TEACHER_ROLE));
         teacher.setRegistered(LocalDate.now());
         return teacherCrudRepository.save(teacher);

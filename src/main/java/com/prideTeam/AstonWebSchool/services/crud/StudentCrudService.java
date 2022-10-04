@@ -1,11 +1,11 @@
-package com.prideTeam.AstonWebSchool.services;
+package com.prideTeam.AstonWebSchool.services.crud;
 
 import com.prideTeam.AstonWebSchool.entity.Student;
 
 import java.util.List;
 
-public interface StudentService {
-    Student save(Student student);
+public interface StudentCrudService {
+    Student create(Student student);
 
     Student getById(Integer studentId);
 

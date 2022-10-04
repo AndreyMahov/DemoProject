@@ -1,8 +1,8 @@
-package com.prideTeam.AstonWebSchool.services.impl;
+package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Group;
 import com.prideTeam.AstonWebSchool.repositories.GroupCrudRepository;
-import com.prideTeam.AstonWebSchool.services.GroupCrudService;
+import com.prideTeam.AstonWebSchool.services.crud.GroupCrudService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,27 +14,27 @@ import java.util.Objects;
 @Service
 @Transactional(readOnly = true)
 public class GroupCrudServiceImpl implements GroupCrudService {
-    private final GroupCrudRepository repo;
+    private final GroupCrudRepository groupCrudRepository;
 
-    public GroupCrudServiceImpl(GroupCrudRepository repo) {
-        this.repo = repo;
+    public GroupCrudServiceImpl(GroupCrudRepository groupCrudRepository) {
+        this.groupCrudRepository = groupCrudRepository;
     }
 
     @Override
     @Transactional
-    public Group save(Group group) {
+    public Group create(Group group) {
         group.setRegistered(LocalDate.now());
-        return repo.save(group);
+        return groupCrudRepository.save(group);
     }
 
     @Override
     public Group getById(Integer groupId) {
-        return repo.findById(groupId).orElseThrow(EntityNotFoundException::new);
+        return groupCrudRepository.findById(groupId).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
     public List<Group> getAll() {
-        return repo.findAll();
+        return groupCrudRepository.findAll();
     }
 
     @Override
@@ -42,12 +42,12 @@ public class GroupCrudServiceImpl implements GroupCrudService {
     public void update(Group group, Integer id) {
         if (!Objects.equals(group.getId(), id))
             throw new EntityNotFoundException();
-        repo.save(group);
+        groupCrudRepository.save(group);
     }
 
     @Override
     @Transactional
     public void delete(Integer groupId) {
-        repo.delete(repo.getReferenceById(groupId));
+        groupCrudRepository.delete(groupCrudRepository.getReferenceById(groupId));
     }
 }

@@ -1,23 +1,23 @@
-package com.prideTeam.AstonWebSchool.services.impl;
+package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Role;
 import com.prideTeam.AstonWebSchool.repositories.RoleRepository;
-import com.prideTeam.AstonWebSchool.services.RoleService;
+import com.prideTeam.AstonWebSchool.services.crud.RoleCrudService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class RoleServiceImpl implements RoleService {
-    private final RoleRepository repo;
+public class RoleCrudServiceImpl implements RoleCrudService {
+    private final RoleRepository roleRepository;
 
-    public RoleServiceImpl(RoleRepository repo) {
-        this.repo = repo;
+    public RoleCrudServiceImpl(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
     }
 
 
     @Override
-    public Role save(Role role) {
+    public Role create(Role role) {
         return null;
     }
 
@@ -43,6 +43,6 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role findByName(String roleName) {
-        return repo.findByRole(roleName);
+        return roleRepository.findByRole(roleName);
     }
 }

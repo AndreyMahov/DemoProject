@@ -1,11 +1,11 @@
-package com.prideTeam.AstonWebSchool.services;
+package com.prideTeam.AstonWebSchool.services.crud;
 
 import com.prideTeam.AstonWebSchool.entity.Admin;
 
 import java.util.List;
 
 public interface AdminCrudService {
-    Admin save(Admin admin);
+    Admin create(Admin admin);
 
     Admin getById(Integer adminId);
 

@@ -1,12 +1,11 @@
-package com.prideTeam.AstonWebSchool.services;
+package com.prideTeam.AstonWebSchool.services.crud;
 
 import com.prideTeam.AstonWebSchool.entity.Role;
-import com.prideTeam.AstonWebSchool.entity.Student;
 
 import java.util.List;
 
-public interface RoleService {
-    Role save(Role role);
+public interface RoleCrudService {
+    Role create(Role role);
 
     Role getById(Integer roleId);
 
