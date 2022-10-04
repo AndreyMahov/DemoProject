@@ -12,7 +12,7 @@ public interface LessonCrudService {
 
     List<Lesson> getAll();
 
-    void update(Lesson lesson);
+    void update(Lesson lesson, Integer lessonId);
 
     void delete(Integer lessonId);
 }
