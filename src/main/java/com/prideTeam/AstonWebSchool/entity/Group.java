@@ -18,7 +18,7 @@ public class Group extends AbstractBaseEntity{
     @Size(min = 5, max = 64)
     private String name;
 
-    @Column(name = "registered", nullable = false)
+    @Column(name = "registered", nullable = false, updatable = false)
     @NotNull
     private LocalDate registered;
 
