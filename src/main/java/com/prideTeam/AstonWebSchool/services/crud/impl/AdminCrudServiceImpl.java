@@ -3,7 +3,7 @@ package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Admin;
 import com.prideTeam.AstonWebSchool.repositories.AdminCrudRepository;
-import com.prideTeam.AstonWebSchool.repositories.RoleRepository;
+import com.prideTeam.AstonWebSchool.repositories.RoleCrudRepository;
 import com.prideTeam.AstonWebSchool.services.crud.AdminCrudService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,17 +18,17 @@ import java.util.Objects;
 public class AdminCrudServiceImpl implements AdminCrudService {
     private static final String ADMIN_ROLE = "admin";
     private final AdminCrudRepository adminCrudRepository;
-    private final RoleRepository roleRepo;
+    private final RoleCrudRepository roleCrudRepository;
 
-    public AdminCrudServiceImpl(AdminCrudRepository adminCrudRepository, RoleRepository roleRepo) {
+    public AdminCrudServiceImpl(AdminCrudRepository adminCrudRepository, RoleCrudRepository roleCrudRepository) {
         this.adminCrudRepository = adminCrudRepository;
-        this.roleRepo = roleRepo;
+        this.roleCrudRepository = roleCrudRepository;
     }
 
     @Override
     @Transactional
     public Admin create(Admin admin) {
-        admin.setRole(roleRepo.findByRole(ADMIN_ROLE));
+        admin.setRole(roleCrudRepository.findByRole(ADMIN_ROLE));
         admin.setRegistered(LocalDate.now());
         return adminCrudRepository.save(admin);
     }

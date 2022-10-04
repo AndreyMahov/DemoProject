@@ -2,44 +2,45 @@ package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Log;
 import com.prideTeam.AstonWebSchool.entity.Student;
-import com.prideTeam.AstonWebSchool.repositories.LogRepository;
-import com.prideTeam.AstonWebSchool.repositories.StudentRepository;
+import com.prideTeam.AstonWebSchool.repositories.LogCrudRepository;
+import com.prideTeam.AstonWebSchool.repositories.StudentCrudRepository;
 import com.prideTeam.AstonWebSchool.services.crud.LogCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional(readOnly = true)
 public class LogCrudServiceImpl implements LogCrudService {
 
-    private final LogRepository logRepository;
-    private final StudentRepository studentRepository;
+    private final LogCrudRepository logCrudRepository;
+    private final StudentCrudRepository studentCrudRepository;
 
     @Autowired
-    public LogCrudServiceImpl(LogRepository logRepository, StudentRepository studentRepository) {
-        this.logRepository = logRepository;
-        this.studentRepository = studentRepository;
+    public LogCrudServiceImpl(LogCrudRepository logCrudRepository, StudentCrudRepository studentCrudRepository) {
+        this.logCrudRepository = logCrudRepository;
+        this.studentCrudRepository = studentCrudRepository;
     }
 
     @Override
     @Transactional
     public Log create(Log log, Integer studentId) {
-        Student currentStudent = studentRepository.findById(studentId).orElseThrow(EntityNotFoundException::new);
-
-        if (log.getStudent().equals(currentStudent)) {
-            logRepository.save(log);
-            return log;
-        } else throw new EntityNotFoundException();
+        log.setDate(LocalDate.now());
+        if (!Objects.equals(log.getStudent().getId(), studentId))
+            throw new EntityNotFoundException();
+        return logCrudRepository.save(log);
     }
 
     @Override
     public Log getById(Integer logId, Integer studentId) {
-        Log currentLog = logRepository.findById(logId).orElseThrow(EntityNotFoundException::new);
-        Student currentStudent = studentRepository.findById(studentId).orElseThrow(EntityNotFoundException::new);
+        //TODO
+        Log currentLog = logCrudRepository.findById(logId).orElseThrow(EntityNotFoundException::new);
+        Student currentStudent = studentCrudRepository.findById(studentId).orElseThrow(EntityNotFoundException::new);
 
         if (currentLog.getStudent().equals(currentStudent))
             return currentLog;
@@ -48,28 +49,28 @@ public class LogCrudServiceImpl implements LogCrudService {
 
     @Override
     public List<Log> getAll(Integer studentId) {
-        if (studentRepository.existsById(studentId))
-            return logRepository.findAll();
+        if (studentCrudRepository.existsById(studentId))
+            return logCrudRepository.findAll();
         else throw new EntityNotFoundException();
     }
 
     @Override
     @Transactional
     public void update(Log log, Integer studentId) {
-        Student currentStudent = studentRepository.findById(studentId).orElseThrow(EntityNotFoundException::new);
-        if (log.getStudent().equals(currentStudent))
-            logRepository.save(log);
-        else throw new EntityNotFoundException();
+        if (!Objects.equals(log.getStudent().getId(), studentId))
+            throw new EntityNotFoundException();
+        logCrudRepository.save(log);
     }
 
     @Override
     @Transactional
     public void delete(Integer logId, Integer studentId) {
-        Log currentLog = logRepository.findById(logId).orElseThrow(EntityNotFoundException::new);
-        Student currentStudent = studentRepository.findById(studentId).orElseThrow(EntityNotFoundException::new);
+        //TODO
+        Log currentLog = logCrudRepository.findById(logId).orElseThrow(EntityNotFoundException::new);
+        Student currentStudent = studentCrudRepository.findById(studentId).orElseThrow(EntityNotFoundException::new);
 
         if (currentLog.getStudent().equals(currentStudent))
-            logRepository.delete(currentLog);
+            logCrudRepository.delete(currentLog);
         else throw new EntityNotFoundException();
     }
 }

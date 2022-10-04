@@ -1,7 +1,7 @@
 package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Role;
-import com.prideTeam.AstonWebSchool.repositories.RoleRepository;
+import com.prideTeam.AstonWebSchool.repositories.RoleCrudRepository;
 import com.prideTeam.AstonWebSchool.services.crud.RoleCrudService;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +9,10 @@ import java.util.List;
 
 @Service
 public class RoleCrudServiceImpl implements RoleCrudService {
-    private final RoleRepository roleRepository;
+    private final RoleCrudRepository roleCrudRepository;
 
-    public RoleCrudServiceImpl(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
+    public RoleCrudServiceImpl(RoleCrudRepository roleCrudRepository) {
+        this.roleCrudRepository = roleCrudRepository;
     }
 
 
@@ -43,6 +43,6 @@ public class RoleCrudServiceImpl implements RoleCrudService {
 
     @Override
     public Role findByName(String roleName) {
-        return roleRepository.findByRole(roleName);
+        return roleCrudRepository.findByRole(roleName);
     }
 }
