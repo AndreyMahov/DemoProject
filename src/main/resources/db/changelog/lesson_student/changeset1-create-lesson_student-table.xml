@@ -7,11 +7,11 @@
     <changeSet id="create-table-lesson_student" author="Vova">
         <createTable tableName="lesson_student">
             <column name="lesson_id" type="int">
-                <constraints nullable="false" foreignKeyName="fk_lesson" referencedTableName="lesson" referencedColumnNames="id"/>
+                <constraints nullable="false" foreignKeyName="fk_student_lesson" referencedTableName="lesson" referencedColumnNames="id"/>
             </column>
 
             <column name="student_id" type="int">
-                <constraints nullable="false" foreignKeyName="fk_student" referencedTableName="student" referencedColumnNames="id"/>
+                <constraints nullable="false" foreignKeyName="fk_lesson_student" referencedTableName="student" referencedColumnNames="id"/>
             </column>
         </createTable>
     </changeSet>

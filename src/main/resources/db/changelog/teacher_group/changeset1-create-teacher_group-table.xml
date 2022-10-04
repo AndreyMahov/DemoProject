@@ -5,15 +5,13 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
     <changeSet id="create-table-teacher_group" author="Vova">
-        <!-- Прописываем создание таблицы genre-->
         <createTable tableName="teacher_group">
-            <!--Создаем поля -->
             <column name="teacher_id" type="int">
-                <constraints nullable="false" foreignKeyName="fk_teacher" referencedTableName="teacher" referencedColumnNames="id"/>
+                <constraints nullable="false" foreignKeyName="fk_teacher_group" referencedTableName="teacher" referencedColumnNames="id"/>
             </column>
 
             <column name="group_id" type="int">
-                <constraints nullable="false" foreignKeyName="fk_group" referencedTableName="group" referencedColumnNames="id"/>
+                <constraints nullable="false" foreignKeyName="fk_group_teacher" referencedTableName="group" referencedColumnNames="id"/>
             </column>
         </createTable>
     </changeSet>
