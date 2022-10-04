@@ -1,35 +1,51 @@
 package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Lesson;
+import com.prideTeam.AstonWebSchool.repositories.LessonCrudRepository;
 import com.prideTeam.AstonWebSchool.services.crud.LessonCrudService;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class LessonCrudServiceImpl implements LessonCrudService {
+
+    private final LessonCrudRepository lessonCrudRepository;
+
+    public LessonCrudServiceImpl(LessonCrudRepository lessonCrudRepository) {
+        this.lessonCrudRepository = lessonCrudRepository;
+    }
+
     @Override
     public Lesson create(Lesson lesson) {
-        return null;
+        lesson.setDate(LocalDate.from(LocalDateTime.now()));
+        return lessonCrudRepository.save(lesson);
     }
 
     @Override
     public Lesson getById(Integer lessonId) {
-        return null;
+        return lessonCrudRepository.findById(lessonId).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
     public List<Lesson> getAll() {
-        return null;
+        return lessonCrudRepository.findAll();
     }
 
     @Override
-    public void update(Lesson lesson) {
-
+    public void update(Lesson lesson, Integer lessonId) {
+        if (!Objects.equals(lesson.getId(), lessonId)) {
+            throw new EntityNotFoundException();
+        }
+        lessonCrudRepository.save(lesson);
     }
 
     @Override
     public void delete(Integer lessonId) {
-
+        lessonCrudRepository.deleteById(lessonId);
     }
 }
