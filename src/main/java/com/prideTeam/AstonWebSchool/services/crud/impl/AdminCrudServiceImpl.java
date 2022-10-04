@@ -1,10 +1,10 @@
-package com.prideTeam.AstonWebSchool.services.impl;
+package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 
 import com.prideTeam.AstonWebSchool.entity.Admin;
 import com.prideTeam.AstonWebSchool.repositories.AdminCrudRepository;
 import com.prideTeam.AstonWebSchool.repositories.RoleRepository;
-import com.prideTeam.AstonWebSchool.services.AdminCrudService;
+import com.prideTeam.AstonWebSchool.services.crud.AdminCrudService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,30 +17,30 @@ import java.util.Objects;
 @Transactional(readOnly = true)
 public class AdminCrudServiceImpl implements AdminCrudService {
     private static final String ADMIN_ROLE = "admin";
-    private final AdminCrudRepository repo;
+    private final AdminCrudRepository adminCrudRepository;
     private final RoleRepository roleRepo;
 
-    public AdminCrudServiceImpl(AdminCrudRepository repo, RoleRepository roleRepo) {
-        this.repo = repo;
+    public AdminCrudServiceImpl(AdminCrudRepository adminCrudRepository, RoleRepository roleRepo) {
+        this.adminCrudRepository = adminCrudRepository;
         this.roleRepo = roleRepo;
     }
 
     @Override
     @Transactional
-    public Admin save(Admin admin) {
+    public Admin create(Admin admin) {
         admin.setRole(roleRepo.findByRole(ADMIN_ROLE));
         admin.setRegistered(LocalDate.now());
-        return repo.save(admin);
+        return adminCrudRepository.save(admin);
     }
 
     @Override
     public Admin getById(Integer adminId) {
-        return repo.findById(adminId).orElseThrow(EntityNotFoundException::new);
+        return adminCrudRepository.findById(adminId).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
     public List<Admin> getAll() {
-        return repo.findAll();
+        return adminCrudRepository.findAll();
     }
 
     @Override
@@ -48,12 +48,12 @@ public class AdminCrudServiceImpl implements AdminCrudService {
     public void update(Admin admin, Integer id) {
         if (!Objects.equals(admin.getId(), id))
             throw new EntityNotFoundException();
-        repo.save(admin);
+        adminCrudRepository.save(admin);
     }
 
     @Override
     @Transactional
     public void delete(Integer adminId) {
-        repo.delete(repo.getReferenceById(adminId));
+        adminCrudRepository.delete(adminCrudRepository.getReferenceById(adminId));
     }
 }

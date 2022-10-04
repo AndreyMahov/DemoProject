@@ -1,12 +1,12 @@
-package com.prideTeam.AstonWebSchool.services;
+package com.prideTeam.AstonWebSchool.services.crud;
 
 import com.prideTeam.AstonWebSchool.entity.Lesson;
 
 import java.util.List;
 
-public interface LessonService {
+public interface LessonCrudService {
 
-    Lesson save(Lesson lesson);
+    Lesson create(Lesson lesson);
 
     Lesson getById(Integer lessonId);
 

@@ -2,11 +2,19 @@ package com.prideTeam.AstonWebSchool.controllers.admin;
 
 
 import com.prideTeam.AstonWebSchool.entity.Admin;
-import com.prideTeam.AstonWebSchool.services.AdminCrudService;
+import com.prideTeam.AstonWebSchool.services.crud.AdminCrudService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -14,7 +22,7 @@ import java.util.List;
 
 /**
  * Контроллер обрабатывающий CRUD запросы для сущности Admin.
- * Доступ можно определеять по uri, т.е. к данному контроллеру будет иметь доступ Admin.
+ * Доступ можно определять по uri, т.е. к данному контроллеру будет иметь доступ Admin.
  */
 
 @RestController
@@ -31,7 +39,7 @@ public class AdminCrudRestController {
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Admin> createWithLocation(@RequestBody Admin admin) {
-        Admin created = adminCrudService.save(admin);
+        Admin created = adminCrudService.create(admin);
 
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")

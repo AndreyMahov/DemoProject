@@ -1,9 +1,9 @@
-package com.prideTeam.AstonWebSchool.services.impl;
+package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Student;
 import com.prideTeam.AstonWebSchool.repositories.RoleRepository;
 import com.prideTeam.AstonWebSchool.repositories.StudentRepository;
-import com.prideTeam.AstonWebSchool.services.StudentService;
+import com.prideTeam.AstonWebSchool.services.crud.StudentCrudService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,21 +13,21 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class StudentServiceImpl implements StudentService {
+public class StudentCrudServiceImpl implements StudentCrudService {
 
     private static final String STUDENT_ROLE = "student";
     private final StudentRepository studentRepository;
     private final RoleRepository roleRepository;
 
 
-    public StudentServiceImpl(StudentRepository studentRepository, RoleRepository roleRepository) {
+    public StudentCrudServiceImpl(StudentRepository studentRepository, RoleRepository roleRepository) {
         this.studentRepository = studentRepository;
         this.roleRepository = roleRepository;
     }
 
     @Override
     @Transactional
-    public Student save(Student student) {
+    public Student create(Student student) {
         student.setRole(roleRepository.findByRole(STUDENT_ROLE));
         student.setRegistered(LocalDate.now());
         return studentRepository.save(student);
