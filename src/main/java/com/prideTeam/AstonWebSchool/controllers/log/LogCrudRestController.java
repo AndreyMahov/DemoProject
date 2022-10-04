@@ -33,8 +33,8 @@ public class LogCrudRestController {
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<Log> createWithLocation(@RequestBody Log log, @PathVariable Integer studentId) {
-        Log created = logService.create(log, studentId);
+    public ResponseEntity<Log> createWithLocation(@RequestBody Log log) {
+        Log created = logService.create(log);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
                 .buildAndExpand(created.getId()).toUri();
