@@ -5,7 +5,7 @@ import com.prideTeam.AstonWebSchool.entity.Log;
 import java.util.List;
 
 public interface LogCrudService {
-    Log create(Log log, Integer studentId);
+    Log create(Log log);
 
     Log getById(Integer logId, Integer studentId);
 
