@@ -1,8 +1,8 @@
 package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Student;
-import com.prideTeam.AstonWebSchool.repositories.RoleRepository;
-import com.prideTeam.AstonWebSchool.repositories.StudentRepository;
+import com.prideTeam.AstonWebSchool.repositories.RoleCrudRepository;
+import com.prideTeam.AstonWebSchool.repositories.StudentCrudRepository;
 import com.prideTeam.AstonWebSchool.services.crud.StudentCrudService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,31 +16,31 @@ import java.util.List;
 public class StudentCrudServiceImpl implements StudentCrudService {
 
     private static final String STUDENT_ROLE = "student";
-    private final StudentRepository studentRepository;
-    private final RoleRepository roleRepository;
+    private final StudentCrudRepository studentCrudRepository;
+    private final RoleCrudRepository roleCrudRepository;
 
 
-    public StudentCrudServiceImpl(StudentRepository studentRepository, RoleRepository roleRepository) {
-        this.studentRepository = studentRepository;
-        this.roleRepository = roleRepository;
+    public StudentCrudServiceImpl(StudentCrudRepository studentCrudRepository, RoleCrudRepository roleCrudRepository) {
+        this.studentCrudRepository = studentCrudRepository;
+        this.roleCrudRepository = roleCrudRepository;
     }
 
     @Override
     @Transactional
     public Student create(Student student) {
-        student.setRole(roleRepository.findByRole(STUDENT_ROLE));
+        student.setRole(roleCrudRepository.findByRole(STUDENT_ROLE));
         student.setRegistered(LocalDate.now());
-        return studentRepository.save(student);
+        return studentCrudRepository.save(student);
     }
 
     @Override
     public Student getById(Integer studentId) {
-        return studentRepository.findById(studentId).orElseThrow(EntityNotFoundException::new);
+        return studentCrudRepository.findById(studentId).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
     public List<Student> getAll() {
-        return studentRepository.findAll();
+        return studentCrudRepository.findAll();
     }
 
     @Override
@@ -49,12 +49,12 @@ public class StudentCrudServiceImpl implements StudentCrudService {
         if (student.getId() != studentId) {
             throw new EntityNotFoundException();
         }
-        studentRepository.save(student);
+        studentCrudRepository.save(student);
     }
 
     @Override
     @Transactional
     public void delete(Integer studentId) {
-        studentRepository.deleteById(studentId);
+        studentCrudRepository.deleteById(studentId);
     }
 }

@@ -7,6 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional(readOnly = true)
-public interface RoleRepository extends JpaRepository<Role,Integer> {
+public interface RoleCrudRepository extends JpaRepository<Role,Integer> {
     Role findByRole(String role);
 }

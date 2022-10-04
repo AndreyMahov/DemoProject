@@ -1,9 +1,9 @@
 package com.prideTeam.AstonWebSchool.repositories;
 
-import com.prideTeam.AstonWebSchool.entity.Student;
+import com.prideTeam.AstonWebSchool.entity.Lesson;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StudentRepository extends JpaRepository<Student,Integer> {
+public interface LessonCrudRepository extends JpaRepository<Lesson,Integer> {
 }
