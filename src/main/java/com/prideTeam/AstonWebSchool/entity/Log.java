@@ -25,7 +25,7 @@ public class Log extends AbstractBaseEntity {
     @Size(min = 5, max = 72)
     private String body;
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "date", nullable = false, updatable = false)
     @NotNull
     private LocalDate date;
 

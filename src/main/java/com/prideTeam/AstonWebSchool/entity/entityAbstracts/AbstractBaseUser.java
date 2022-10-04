@@ -40,7 +40,7 @@ public abstract class AbstractBaseUser extends AbstractBaseEntity {
     @Size(min = 2, max = 64)
     private String surname;
 
-    @Column(name = "registered", nullable = false)
+    @Column(name = "registered", nullable = false, updatable = false)
 //    @NotNull(groups = View.Persist.class)
     private LocalDate registered;
 
