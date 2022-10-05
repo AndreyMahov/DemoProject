@@ -20,3 +20,5 @@ AndreyMahov
 схема бд
 https://dbdiagram.io/d/6335c5837b3d2034ffebacdd
 
+презентация https://docs.google.com/presentation/d/1dZXquaxedDtoj7jcyKP2g2V1LFywDRek/edit?usp=sharing&ouid=100890688136120607783&rtpof=true&sd=true
+
