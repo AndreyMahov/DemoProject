@@ -4,6 +4,7 @@ import com.prideTeam.AstonWebSchool.entity.Lesson;
 import com.prideTeam.AstonWebSchool.repositories.LessonCrudRepository;
 import com.prideTeam.AstonWebSchool.services.crud.LessonCrudService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
+@Transactional(readOnly = true)
 public class LessonCrudServiceImpl implements LessonCrudService {
 
     private final LessonCrudRepository lessonCrudRepository;
@@ -21,6 +23,7 @@ public class LessonCrudServiceImpl implements LessonCrudService {
     }
 
     @Override
+    @Transactional
     public Lesson create(Lesson lesson) {
         lesson.setDate(LocalDate.from(LocalDateTime.now()));
         return lessonCrudRepository.save(lesson);
@@ -37,6 +40,7 @@ public class LessonCrudServiceImpl implements LessonCrudService {
     }
 
     @Override
+    @Transactional
     public void update(Lesson lesson, Integer lessonId) {
         if (!Objects.equals(lesson.getId(), lessonId)) {
             throw new EntityNotFoundException();
@@ -45,6 +49,7 @@ public class LessonCrudServiceImpl implements LessonCrudService {
     }
 
     @Override
+    @Transactional
     public void delete(Integer lessonId) {
         lessonCrudRepository.deleteById(lessonId);
     }

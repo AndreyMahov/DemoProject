@@ -11,7 +11,7 @@ public interface RoleCrudService {
 
     List<Role> getAll();
 
-    void update(Role role);
+    void update(Role role, Integer roleId);
 
     void delete(Integer roleId);
 
