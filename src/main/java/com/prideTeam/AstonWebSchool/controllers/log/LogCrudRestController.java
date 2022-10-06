@@ -53,6 +53,7 @@ public class LogCrudRestController {
         return logService.getAll(studentId);
     }
 
+    // настроить проверку при обновлении лога. обновить можно только не проверенный лог
     @PutMapping(value = "/{logId}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody Log log, @PathVariable Integer studentId) {

@@ -26,4 +26,8 @@ public class TeacherRestController {
     public List<Group> getGroupsForTeacher(@PathVariable Integer teacherId) {
         return Collections.emptyList();
     }
+
+    // добавить балл студенту
+    // просмотреть логи студента
+
 }
