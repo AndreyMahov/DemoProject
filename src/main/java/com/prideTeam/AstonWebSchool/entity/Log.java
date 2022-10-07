@@ -25,18 +25,18 @@ public class Log extends AbstractBaseEntity {
     @Size(min = 5, max = 72)
     private String body;
 
-    @Column(name = "date", nullable = false, updatable = false)
+    @Column(name = "registered", nullable = false, updatable = false)
     @NotNull
-    private LocalDate date;
+    private LocalDate registered;
 
     public Log() {
     }
 
-    public Log(Integer id, Student student, String body, LocalDate date) {
+    public Log(Integer id, Student student, String body, LocalDate registered) {
         super(id);
         this.student = student;
         this.body = body;
-        this.date = date;
+        this.registered = registered;
     }
 
     public Student getStudent() {
@@ -55,11 +55,11 @@ public class Log extends AbstractBaseEntity {
         this.body = body;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getRegistered() {
+        return registered;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setRegistered(LocalDate date) {
+        this.registered = date;
     }
 }

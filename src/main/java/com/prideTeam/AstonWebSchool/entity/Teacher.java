@@ -12,10 +12,10 @@ import java.util.Set;
 @Entity
 @Table(name = "teacher")
 public class Teacher extends AbstractBaseUser {
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "teacher")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "teachers")
     private Set<Group> groups;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "teacher")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "teachers")
     private Set<Lesson> lessons;
 
     public Teacher() {

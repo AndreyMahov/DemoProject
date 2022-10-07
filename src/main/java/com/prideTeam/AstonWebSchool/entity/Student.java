@@ -21,7 +21,7 @@ public class Student extends AbstractBaseUser {
     @JoinColumn(name = "group_id")
     private Group group;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "student")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "students")
     private Set<Lesson> lessons;
 
     @Column(name = "points", nullable = false)
