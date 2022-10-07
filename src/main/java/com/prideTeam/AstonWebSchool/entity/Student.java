@@ -8,12 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -30,9 +28,6 @@ public class Student extends AbstractBaseUser {
     @NotNull
     @PositiveOrZero
     private Float points;
-
-    @OneToMany(mappedBy = "student")
-    private List<Log> logs;
 
     @Column(name = "absences", nullable = false)
     @NotNull
@@ -107,13 +102,5 @@ public class Student extends AbstractBaseUser {
 
     public void setLessons(Set<Lesson> lessons) {
         this.lessons = lessons;
-    }
-
-    public List<Log> getLogs() {
-        return logs;
-    }
-
-    public void setLogs(List<Log> logs) {
-        this.logs = logs;
     }
 }
