@@ -42,18 +42,18 @@ public class Lesson extends AbstractBaseEntity {
     @Size(min = 5, max = 64)
     private String value;
 
-    @Column(name = "date", nullable = false, updatable = false)
+    @Column(name = "registered", nullable = false, updatable = false)
     @NotNull
-    private LocalDate date;
+    private LocalDate registered;
 
     public Lesson() {
     }
 
-    public Lesson(Integer id, Group group, String value, LocalDate date) {
+    public Lesson(Integer id, Group group, String value, LocalDate registered) {
         super(id);
         this.group = group;
         this.value = value;
-        this.date = date;
+        this.registered = registered;
     }
 
     public void addStudent(Student student) {
@@ -92,12 +92,12 @@ public class Lesson extends AbstractBaseEntity {
         this.value = value;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getRegistered() {
+        return registered;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setRegistered(LocalDate date) {
+        this.registered = date;
     }
 
     public Set<Student> getStudents() {
