@@ -36,13 +36,13 @@ public class StudentRestController {
     }
 
     @PatchMapping(params = "exclusion/absences")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void excludeWithNAbsences(@RequestParam int absences, @PathVariable Integer id) {
 
     }
 
     @GetMapping(params = "exclusion")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     public boolean isExcluded(@PathVariable Integer id) {
         return false;
     }
