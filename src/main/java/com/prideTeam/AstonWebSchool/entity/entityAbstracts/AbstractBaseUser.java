@@ -16,32 +16,32 @@ import java.time.LocalDate;
 public abstract class AbstractBaseUser extends AbstractBaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
-    private Role role;
+    protected Role role;
 
     @Column(name = "email", nullable = false, unique = true)
     @Email
     @NotBlank
     @Size(max = 254)
-    private String email;
+    protected String email;
 
     @Column(name = "password", nullable = false)
     @NotBlank
     @Size(min = 5, max = 64)
-    private String password;
+    protected String password;
 
     @Column(name = "name", nullable = false)
     @NotBlank
     @Size(min = 2, max = 64)
-    private String name;
+    protected String name;
 
     @Column(name = "surname", nullable = false)
     @NotBlank
     @Size(min = 2, max = 64)
-    private String surname;
+    protected String surname;
 
     @Column(name = "registered", nullable = false, updatable = false)
 //    @NotNull(groups = View.Persist.class)
-    private LocalDate registered;
+    protected LocalDate registered;
 
     protected AbstractBaseUser() {
     }

@@ -15,4 +15,15 @@ public class Admin extends AbstractBaseUser {
     public Admin(Integer id, Role role, String email, String password, String name, String surname, LocalDate registered) {
         super(id, role, email, password, name, surname, registered);
     }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "id=" + id +
+                ", role=" + role +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '}';
+    }
 }
