@@ -2,7 +2,13 @@ package com.prideTeam.AstonWebSchool.entity;
 
 import com.prideTeam.AstonWebSchool.entity.entityAbstracts.AbstractBaseUser;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDate;
@@ -11,15 +17,11 @@ import java.util.Set;
 @Entity
 @Table(name = "student")
 public class Student extends AbstractBaseUser {
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "group_id")
     private Group group;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "lesson_student",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "lesson_id")
-    )
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "student")
     private Set<Lesson> lessons;
 
     @Column(name = "points", nullable = false)
