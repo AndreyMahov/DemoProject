@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StudentRestController {
     static final String REST_URL = "/rest/students/{id}/";
 
+
     @PatchMapping(params = "exclusion")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void exclude(@PathVariable Integer id) {
@@ -36,13 +36,13 @@ public class StudentRestController {
     }
 
     @PatchMapping(params = "exclusion/absences")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     public void excludeWithNAbsences(@RequestParam int absences, @PathVariable Integer id) {
 
     }
 
     @GetMapping(params = "exclusion")
-    @ResponseBody
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean isExcluded(@PathVariable Integer id) {
         return false;
     }
@@ -54,7 +54,7 @@ public class StudentRestController {
     }
 
     @GetMapping(params = "rating")
-    @ResponseBody
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public int getRating(@PathVariable Integer id) {
         return -1;
     }
@@ -84,13 +84,13 @@ public class StudentRestController {
     }
 
     @GetMapping(params = "absences")
-    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
     public int getAbsences(@PathVariable Integer id) {
         return -1;
     }
 
     @GetMapping(params = "reasonable_absences")
-    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
     public int getReasonableAbsences(@PathVariable Integer id) {
         return -1;
     }

@@ -39,6 +39,7 @@ public class TeacherCrudRestController {
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Teacher> createWithLocation(@RequestBody Teacher teacher) {
         Teacher created = teacherCrudService.create(teacher);
 
@@ -50,11 +51,13 @@ public class TeacherCrudRestController {
     }
 
     @GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @ResponseStatus(HttpStatus.OK)
     public Teacher get(@PathVariable Integer id) {
         return teacherCrudService.getById(id);
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @ResponseStatus(HttpStatus.OK)
     public List<Teacher> getAll() {
         return teacherCrudService.getAll();
     }
@@ -66,7 +69,7 @@ public class TeacherCrudRestController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable Integer id) {
         teacherCrudService.delete(id);
     }
