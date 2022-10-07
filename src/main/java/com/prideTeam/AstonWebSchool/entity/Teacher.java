@@ -2,25 +2,20 @@ package com.prideTeam.AstonWebSchool.entity;
 
 import com.prideTeam.AstonWebSchool.entity.entityAbstracts.AbstractBaseUser;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
 @Table(name = "teacher")
 public class Teacher extends AbstractBaseUser {
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "teacher_group",
-            joinColumns = @JoinColumn(name = "teacher_id"),
-            inverseJoinColumns = @JoinColumn(name = "group_id")
-    )
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "teacher")
     private Set<Group> groups;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "lesson_teacher",
-            joinColumns = @JoinColumn(name = "teacher_id"),
-            inverseJoinColumns = @JoinColumn(name = "lesson_id")
-    )
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "teacher")
     private Set<Lesson> lessons;
 
     public Teacher() {
