@@ -16,7 +16,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "log")
 public class Log extends AbstractBaseEntity {
-    @ManyToOne(fetch = FetchType.LAZY)
+    //@ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
 
