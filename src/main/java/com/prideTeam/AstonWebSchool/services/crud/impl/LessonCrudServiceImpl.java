@@ -25,7 +25,7 @@ public class LessonCrudServiceImpl implements LessonCrudService {
     @Override
     @Transactional
     public Lesson create(Lesson lesson) {
-        lesson.setDate(LocalDate.from(LocalDateTime.now()));
+        lesson.setRegistered(LocalDate.now());
         return lessonCrudRepository.save(lesson);
     }
 
