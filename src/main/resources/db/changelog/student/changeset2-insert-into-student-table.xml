@@ -10,35 +10,8 @@
             <column name="surname" value="studentov"/>
             <column name="email" value="student_frank@gmail.com"/>
             <column name="password" value="password"/>
-            <column name="group_id" value="1"/>
-            <column name="role_id" value="3"/>
-        </insert>
-
-        <insert tableName="student">
-            <column name="name" value="Ivan"/>
-            <column name="surname" value="studentov"/>
-            <column name="email" value="student_ivan@gmail.com"/>
-            <column name="password" value="password"/>
-            <column name="group_id" value="1"/>
-            <column name="role_id" value="3"/>
-        </insert>
-
-        <insert tableName="student">
-            <column name="name" value="Josh"/>
-            <column name="surname" value="studentov"/>
-            <column name="email" value="student_josh@gmail.com"/>
-            <column name="password" value="password"/>
-            <column name="group_id" value="1"/>
-            <column name="role_id" value="3"/>
-        </insert>
-
-        <insert tableName="student">
-            <column name="name" value="Evgeniy"/>
-            <column name="surname" value="studentov"/>
-            <column name="email" value="student_evgeniy@gmail.com"/>
-            <column name="password" value="password"/>
-            <column name="group_id" value="1"/>
-            <column name="role_id" value="3"/>
+            <column name="group_id" value="10000"/>
+            <column name="role_id" value="10003"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

@@ -6,7 +6,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
     <changeSet id="create-table-group" author="Vova">
         <createTable tableName="group">
-            <column name="id" autoIncrement="true"  type="int">
+            <column name="id" defaultValueSequenceNext="global_seq"  type="int">
                 <constraints primaryKey="true"/>
             </column>
 

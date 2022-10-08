@@ -4,10 +4,11 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-    <changeSet id="insert-into-lesson_student" author="Vova">
-        <insert tableName="lesson_student">
-            <column name="student_id" value="10006"/>
-            <column name="lesson_id" value="10007"/>
-        </insert>
+    <changeSet author="Vova" id="global-seq">
+        <createSequence
+                cycle="false"
+                incrementBy="1"
+                sequenceName="global_seq"
+                startValue="10000"/>
     </changeSet>
 </databaseChangeLog>
