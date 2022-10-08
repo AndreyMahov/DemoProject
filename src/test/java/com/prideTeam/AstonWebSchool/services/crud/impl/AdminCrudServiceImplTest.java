@@ -11,11 +11,13 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.ConstraintViolationException;
 
 import static com.prideTeam.AstonWebSchool.testData.AdminTestData.ADMIN_WITH_1_ID;
 import static com.prideTeam.AstonWebSchool.testData.AdminTestData.ALL_ADMINS;
 import static com.prideTeam.AstonWebSchool.testData.AdminTestData.ID;
 import static com.prideTeam.AstonWebSchool.testData.AdminTestData.NEW_ADMIN;
+import static com.prideTeam.AstonWebSchool.testData.AdminTestData.NEW_ADMIN_WITH_INVALID_DATA;
 import static com.prideTeam.AstonWebSchool.testData.AdminTestData.NOT_EXISTING_ID;
 import static com.prideTeam.AstonWebSchool.testData.AdminTestData.UPDATED_ADMIN_WITH_1_ID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,7 +41,7 @@ class AdminCrudServiceImplTest {
 
     @Test
     void createAdmin_adminWithInvalidData_constraintException() {
-
+        assertThrows(ConstraintViolationException.class, () -> adminCrudService.create(NEW_ADMIN_WITH_INVALID_DATA));
     }
 
     @Test
