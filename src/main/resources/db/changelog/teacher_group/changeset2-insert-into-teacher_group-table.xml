@@ -6,23 +6,8 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
     <changeSet id="insert-into-teacher_group" author="Vova">
         <insert tableName="teacher_group">
-            <column name="teacher_id" value="1"/>
-            <column name="group_id" value="1"/>
-        </insert>
-
-        <insert tableName="teacher_group">
-            <column name="teacher_id" value="2"/>
-            <column name="group_id" value="1"/>
-        </insert>
-
-        <insert tableName="teacher_group">
-            <column name="teacher_id" value="1"/>
-            <column name="group_id" value="2"/>
-        </insert>
-
-        <insert tableName="teacher_group">
-            <column name="teacher_id" value="2"/>
-            <column name="group_id" value="2"/>
+            <column name="teacher_id" value="10005"/>
+            <column name="group_id" value="10000"/>
         </insert>
     </changeSet>
 </databaseChangeLog>
