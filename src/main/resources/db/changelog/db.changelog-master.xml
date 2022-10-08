@@ -5,6 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
     <!--Initialization-->
+    <include file="changeset-create-sequence-for-user.xml" relativeToChangelogFile="true"/>
     <include file="group/changeset1-create-group-table.xml" relativeToChangelogFile="true"/>
     <include file="role/changeset1-create-role-table.xml" relativeToChangelogFile="true"/>
     <include file="admin/changeset1-create-admin-table.xml" relativeToChangelogFile="true"/>
@@ -17,14 +18,14 @@
     <include file="lesson_student/changeset1-create-lesson_student-table.xml" relativeToChangelogFile="true"/>
 
     <!--Population-->
-    <include file="group/changeset2-insert-into-group-table.xml" relativeToChangelogFile="true"/>
-    <include file="role/changeset2-insert-into-role-table.xml" relativeToChangelogFile="true"/>
-    <include file="admin/changeset2-insert-into-admin-table.xml" relativeToChangelogFile="true"/>
-    <include file="teacher/changeset2-insert-into-teacher-table.xml" relativeToChangelogFile="true"/>
-    <include file="student/changeset2-insert-into-student-table.xml" relativeToChangelogFile="true"/>
-    <include file="log/changeset2-insert-into-log-table.xml" relativeToChangelogFile="true"/>
-    <include file="lesson/changeset2-insert-into-lesson-table.xml" relativeToChangelogFile="true"/>
+    <include file="group/changeset2-insert-into-group-table.xml" relativeToChangelogFile="true"/> <!--0-->
+    <include file="role/changeset2-insert-into-role-table.xml" relativeToChangelogFile="true"/> <!--1,2,3-->
+    <include file="admin/changeset2-insert-into-admin-table.xml" relativeToChangelogFile="true"/> <!--4-->
+    <include file="teacher/changeset2-insert-into-teacher-table.xml" relativeToChangelogFile="true"/><!--5-->
+    <include file="student/changeset2-insert-into-student-table.xml" relativeToChangelogFile="true"/> <!--6-->
+    <include file="lesson/changeset2-insert-into-lesson-table.xml" relativeToChangelogFile="true"/><!--7-->
     <include file="teacher_group/changeset2-insert-into-teacher_group-table.xml" relativeToChangelogFile="true"/>
     <include file="lesson_teacher/changeset2-insert-into-lesson_teacher-table.xml" relativeToChangelogFile="true"/>
     <include file="lesson_student/changeset2-insert-into-lesson_student-table.xml" relativeToChangelogFile="true"/>
+    <include file="log/changeset2-insert-into-log-table.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

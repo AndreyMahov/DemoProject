@@ -8,21 +8,5 @@
         <insert tableName="group">
             <column name="name" value="Intensive 1"/>
         </insert>
-
-        <insert tableName="group">
-            <column name="name" value="Intensive 2"/>
-        </insert>
-
-        <insert tableName="group">
-            <column name="name" value="Intensive 3"/>
-        </insert>
-
-        <insert tableName="group">
-            <column name="name" value="Intensive 4"/>
-        </insert>
-
-        <insert tableName="group">
-            <column name="name" value="Intensive 5"/>
-        </insert>
     </changeSet>
 </databaseChangeLog>
