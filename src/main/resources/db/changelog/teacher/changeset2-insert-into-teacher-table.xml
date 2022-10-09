@@ -10,15 +10,7 @@
             <column name="surname" value="teacherov"/>
             <column name="email" value="teacher_steve@gmail.com"/>
             <column name="password" value="password"/>
-            <column name="role_id" value="2"/>
-        </insert>
-
-        <insert tableName="teacher">
-            <column name="name" value="Ivan"/>
-            <column name="surname" value="teacherov"/>
-            <column name="email" value="teacher_ivan@gmail.com"/>
-            <column name="password" value="password"/>
-            <column name="role_id" value="2"/>
+            <column name="role_id" value="10002"/>
         </insert>
     </changeSet>
 </databaseChangeLog>
