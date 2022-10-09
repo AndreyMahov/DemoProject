@@ -9,7 +9,7 @@
             <column name="name" value="Steve"/>
             <column name="surname" value="teacherov"/>
             <column name="email" value="teacher_steve@gmail.com"/>
-            <column name="password" value="password"/>
+            <column name="password" value="{noop}password"/>
             <column name="role_id" value="10002"/>
         </insert>
     </changeSet>

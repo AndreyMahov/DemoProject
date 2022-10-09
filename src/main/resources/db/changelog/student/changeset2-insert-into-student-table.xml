@@ -9,7 +9,7 @@
             <column name="name" value="Frank"/>
             <column name="surname" value="studentov"/>
             <column name="email" value="student_frank@gmail.com"/>
-            <column name="password" value="password"/>
+            <column name="password" value="{noop}password"/>
             <column name="group_id" value="10000"/>
             <column name="role_id" value="10003"/>
         </insert>

@@ -23,7 +23,7 @@ import java.util.List;
 @RequestMapping(value = RoleCrudRestController.REST_URL)
 public class RoleCrudRestController {
 
-    static final String REST_URL = "/rest/role";
+    static final String REST_URL = "/rest/roles";
 
     private final RoleCrudService roleCrudService;
 

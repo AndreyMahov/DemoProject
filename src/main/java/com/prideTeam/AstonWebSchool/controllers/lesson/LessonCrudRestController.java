@@ -22,7 +22,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = LessonCrudRestController.REST_URL)
 public class LessonCrudRestController {
-    static final String REST_URL = "rest/lesson";
+    static final String REST_URL = "rest/lessons";
 
     private final LessonCrudService lessonCrudService;
 
