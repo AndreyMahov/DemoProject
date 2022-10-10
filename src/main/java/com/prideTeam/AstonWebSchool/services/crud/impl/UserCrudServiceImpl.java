@@ -2,8 +2,8 @@ package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.AuthorizedUser;
 import com.prideTeam.AstonWebSchool.entity.entityAbstracts.AbstractBaseUser;
-import com.prideTeam.AstonWebSchool.repositories.RoleCrudRepository;
-import com.prideTeam.AstonWebSchool.repositories.UserCrudRepository;
+import com.prideTeam.AstonWebSchool.repositories.crud.RoleCrudRepository;
+import com.prideTeam.AstonWebSchool.repositories.crud.UserCrudRepository;
 import com.prideTeam.AstonWebSchool.services.crud.UserCrudService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

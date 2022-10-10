@@ -1,7 +1,7 @@
 package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Group;
-import com.prideTeam.AstonWebSchool.repositories.GroupCrudRepository;
+import com.prideTeam.AstonWebSchool.repositories.crud.GroupCrudRepository;
 import com.prideTeam.AstonWebSchool.services.crud.GroupCrudService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

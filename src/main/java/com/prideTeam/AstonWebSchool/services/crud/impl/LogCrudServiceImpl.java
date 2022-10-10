@@ -2,8 +2,8 @@ package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Log;
 import com.prideTeam.AstonWebSchool.entity.Student;
-import com.prideTeam.AstonWebSchool.repositories.LogCrudRepository;
-import com.prideTeam.AstonWebSchool.repositories.UserCrudRepository;
+import com.prideTeam.AstonWebSchool.repositories.crud.LogCrudRepository;
+import com.prideTeam.AstonWebSchool.repositories.crud.UserCrudRepository;
 import com.prideTeam.AstonWebSchool.services.crud.LogCrudService;
 import com.prideTeam.AstonWebSchool.util.HibernateUtil;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.prideTeam.AstonWebSchool.repositories;
+package com.prideTeam.AstonWebSchool.repositories.crud;
 
 import com.prideTeam.AstonWebSchool.entity.Log;
 import org.springframework.data.jpa.repository.JpaRepository;
