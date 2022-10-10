@@ -6,5 +6,5 @@ import java.time.LocalDate;
 
 public class GroupTestData {
     public static final Integer GROUP_ID = 10000;
-    public static final Group GROUP = new Group(GROUP_ID, "groupName", LocalDate.now());
+    public static final Group GROUP = new Group(GROUP_ID, "Intensive 1", LocalDate.now());
 }
