@@ -12,6 +12,7 @@
     <include file="teacher/changeset1-create-teacher-table.xml" relativeToChangelogFile="true"/>
     <include file="student/changeset1-create-student-table.xml" relativeToChangelogFile="true"/>
     <include file="log/changeset1-create-log-table.xml" relativeToChangelogFile="true"/>
+    <include file="log/changeset3-add-approved-field.xml" relativeToChangelogFile="true"/>
     <include file="lesson/changeset1-create-lesson-table.xml" relativeToChangelogFile="true"/>
     <include file="teacher_group/changeset1-create-teacher_group-table.xml" relativeToChangelogFile="true"/>
     <include file="lesson_teacher/changeset1-create-lesson_teacher-table.xml" relativeToChangelogFile="true"/>
