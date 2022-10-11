@@ -5,6 +5,6 @@ import com.prideTeam.AstonWebSchool.entity.Group;
 import java.time.LocalDate;
 
 public class GroupTestData {
-
-    public static final Group NEW_GROUP = new Group(1, "groupName", LocalDate.now());
+    public static final Integer GROUP_ID = 10000;
+    public static final Group GROUP = new Group(GROUP_ID, "Intensive 1", LocalDate.now());
 }

@@ -1,7 +1,7 @@
 package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Role;
-import com.prideTeam.AstonWebSchool.repositories.RoleCrudRepository;
+import com.prideTeam.AstonWebSchool.repositories.crud.RoleCrudRepository;
 import com.prideTeam.AstonWebSchool.services.crud.RoleCrudService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

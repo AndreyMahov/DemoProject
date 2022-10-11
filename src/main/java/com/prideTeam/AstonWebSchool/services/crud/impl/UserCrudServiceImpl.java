@@ -1,8 +1,8 @@
 package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.entityAbstracts.AbstractBaseUser;
-import com.prideTeam.AstonWebSchool.repositories.RoleCrudRepository;
-import com.prideTeam.AstonWebSchool.repositories.UserCrudRepository;
+import com.prideTeam.AstonWebSchool.repositories.crud.RoleCrudRepository;
+import com.prideTeam.AstonWebSchool.repositories.crud.UserCrudRepository;
 import com.prideTeam.AstonWebSchool.services.crud.UserCrudService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

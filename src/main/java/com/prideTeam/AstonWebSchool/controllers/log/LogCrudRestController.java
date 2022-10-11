@@ -7,11 +7,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,10 +35,10 @@ public class LogCrudRestController {
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<Log> createWithLocation(@RequestBody Log log) {
-        Log created = logService.create(log);
+    public ResponseEntity<Log> createWithLocation(@RequestBody Log log, @PathVariable Integer studentId) {
+        Log created = logService.create(log, studentId);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path(REST_URL + "/{id}")
+                .path(REST_URL + "/logId")
                 .buildAndExpand(created.getId()).toUri();
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
@@ -44,7 +46,7 @@ public class LogCrudRestController {
     @GetMapping(value = "/{logId}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseBody
     public Log get(@PathVariable Integer logId, @PathVariable Integer studentId) {
-        return logService.getById(logId, studentId);
+        return logService.getByLogIdAndStudentId(logId, studentId);
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -55,13 +57,19 @@ public class LogCrudRestController {
 
     @PutMapping(value = "/{logId}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody Log log, @PathVariable Integer studentId) {
-        logService.update(log, studentId);
+    public void update(@RequestBody Log log, @PathVariable Integer logId, @PathVariable Integer studentId) {
+        logService.update(log, logId, studentId);
     }
 
     @DeleteMapping("/{logId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer logId, @PathVariable Integer studentId) {
         logService.delete(logId, studentId);
+    }
+
+    @PatchMapping("/{logId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void setApprove(@PathVariable Integer logId, @PathVariable Integer studentId, @RequestParam Boolean approved){
+        logService.setApprove(logId, studentId, approved);
     }
 }
