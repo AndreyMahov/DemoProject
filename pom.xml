@@ -141,7 +141,7 @@
                 <activatedProperties>prod</activatedProperties>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
         </profile>
     </profiles>

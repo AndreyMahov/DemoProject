@@ -1,8 +1,6 @@
 package com.prideTeam.AstonWebSchool.services.crud.impl;
 
 import com.prideTeam.AstonWebSchool.entity.Lesson;
-import com.prideTeam.AstonWebSchool.repositories.GroupCrudRepository;
-import com.prideTeam.AstonWebSchool.repositories.LessonCrudRepository;
 import com.prideTeam.AstonWebSchool.repositories.crud.GroupCrudRepository;
 import com.prideTeam.AstonWebSchool.repositories.crud.LessonCrudRepository;
 import com.prideTeam.AstonWebSchool.services.crud.LessonCrudService;
